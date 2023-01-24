@@ -1,0 +1,25 @@
+.attractions {
+    position: relative;
+    height: auto;
+    color: black;
+}
+
+.images-div {
+    padding: 0 !important;
+    position: relative;
+}
+
+.images-div img {
+    padding-bottom: 0 !important;
+    background-size: contain;
+}
+
+.head {
+    width: 100%;
+    color: black;
+    margin-bottom: 6rem;
+}
+
+.col-3 {
+    padding-right: 0.4rem !important;
+}

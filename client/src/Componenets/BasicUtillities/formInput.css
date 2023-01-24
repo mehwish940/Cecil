@@ -1,0 +1,38 @@
+.formInput input,
+textarea {
+    width: 100%;
+    font-size: 1.5rem !important;
+    padding: 0.8rem;
+    border: solid rgba(0, 0, 0, 0.2);
+    border-width: thin;
+    outline: none;
+}
+
+.formInput input::placeholder ,
+.textarea::placeholder{
+    font-size: 1.5rem !important;
+}
+
+.formInput {
+    width: 100%;
+}
+
+.formInput label {
+    font-size: 12px;
+    color: gray;
+}
+
+.formInput span {
+    font-size: 9px;
+    padding: 3px;
+    color: red;
+    display: none;
+}
+
+input:invalid[focused="true"] {
+    border: 1px solid red;
+}
+
+input:invalid[focused="true"]~span {
+    display: block;
+}
