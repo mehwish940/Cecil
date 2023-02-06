@@ -14,8 +14,6 @@ const PORT = process.env.PORT || 8000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
-
 app.get("/hotel", async (req, res) => {
 
     const snapshot = await usersDb.get();
