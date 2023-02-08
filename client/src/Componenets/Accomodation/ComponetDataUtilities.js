@@ -166,6 +166,7 @@ export const BookRoom = (values, BookingDetails, query, roomId, ratesbydate, ext
                 cc_type: values.isChecked ? 18 : 36, bookingstatus: values.isChecked ? 1 : 5
             }),
         }).then(data => data.json()).then((BookingData) => {
+            //console.log(BookingData)
             if (values.isChecked) {
                 resolve(BookingData.ReservationCreate.Success[0].Result[0])
 

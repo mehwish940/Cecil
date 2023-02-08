@@ -3,7 +3,7 @@ import "./Attractions.css";
 
 function Attractions({ nearBy }) {
   return (
-    <div className="main-container attractions">
+    <div className="main-container attractions" id="gallery">
       <div className="inner-container">
         <div className="head text-center">
           {/* <span className="font-20">AIRPORT, RESTAURANTS AND CAFES </span> */}
@@ -20,7 +20,7 @@ function Attractions({ nearBy }) {
                   <h2 className="image-text mb-4 bold">{n.title}</h2>
                   <p className="font-15">{n.desc}</p>
                 </div>
-                <a href="#">View more</a>
+                {/* <a href="#">View more</a> */}
               </figcaption>
             </figure>
           )

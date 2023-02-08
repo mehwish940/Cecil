@@ -15,9 +15,10 @@ import {
   CheckPerson,
 } from "./ComponetDataUtilities";
 import { IoIosInformationCircle } from "react-icons/io";
-
+import { FaSadTear } from "react-icons/fa";
 function Accomodation({ query, setquery, Accomodationid, title }) {
   const [rooms, setRooms] = useState([]);
+  const [ErrorMSg, setErrorMSg] = useState("");
   const [open, setOpen] = useState(false);
   const [Infoopen, InfosetOpen] = useState(false);
   const [roomInfoModal, setRoomInfoiModal] = useState("");
@@ -51,8 +52,13 @@ function Accomodation({ query, setquery, Accomodationid, title }) {
         return roomsDetails.json();
       })
       .then((roomsDetailsJSon) => {
-        // console.log(roomsDetailsJSon)
-        setRooms(roomsDetailsJSon["Success"]["Result"][0]["HotelRooms"]);
+        console.log(roomsDetailsJSon);
+        if (roomsDetailsJSon["Success"]) {
+          setRooms(roomsDetailsJSon["Success"]["Result"][0]["HotelRooms"]);
+        } else {
+          console.log(roomsDetailsJSon["Availability"]["Message"][0]);
+          setErrorMSg(roomsDetailsJSon["Availability"]["Message"][0]);
+        }
         // console.log(roomsDetailsJSon['Success']['Result'][0]['HotelRooms']);
         setquery({ ...query, AccomodationLoading: false });
       })
@@ -138,7 +144,7 @@ function Accomodation({ query, setquery, Accomodationid, title }) {
 
         {query.AccomodationLoading ? (
           <LoadingCards />
-        ) : rooms ? (
+        ) : rooms.length !== 0 ? (
           <Swiper
             pagination={{ clickable: true }}
             breakpoints={breakPoints}
@@ -172,7 +178,11 @@ function Accomodation({ query, setquery, Accomodationid, title }) {
               );
             })}
           </Swiper>
-        ) : null}
+        ) : (
+          <div className="d-flex justify-content-center"> <div className="errorMsg">
+          <FaSadTear className="sad-icons"/>&nbsp;&nbsp;{ErrorMSg}</div></div>
+         
+        )}
       </div>
     </div>
   );
@@ -189,13 +199,14 @@ export function AccomodationCard({
     <div className="Accomodation-card">
       <div
         style={{
-          backgroundImage: `linear-gradient(rgba(47, 70, 95,0.5),rgba(47, 70, 95,0.5)), url(${ 
-            room["RoomImages"][0]?
-            room["RoomImages"][0]["RoomImage"][0]["$"]["Photo_Max500"]
+          backgroundImage: `linear-gradient(rgba(47, 70, 95,0.5),rgba(47, 70, 95,0.5)), url(${
+            room["RoomImages"][0]
+              ? room["RoomImages"][0]["RoomImage"][0]["$"]["Photo_Max500"]
               : ""
-          })`
+          })`,
         }}
-        className="Accomodation-item">
+        className="Accomodation-item"
+      >
         <div className="m-2">
           <div
             className="info-icon"

@@ -25,17 +25,17 @@ function Navbar({ setquery, query }) {
     <>
       {/* <IconContext.Provider value={{ color: "#fff" }}> */}
       <nav className="navbar">
-        <div className="container px-3 position-relative">
+        <div className="container px-3 position-relative navbar-inner">
           <ul className="nav-links-left">
-            <li>Stay</li>
-            <li>dining</li>
+            <li><Link to="#accomodation">Stay</Link></li>
+            <li><Link to="#dining">dining</Link></li>
           </ul>
         <div className="logo-container" style={{backgroundImage: `url(${query.hotelDetails.weblist[0].navbar.logo})`}}>
             {/* <img src={query.hotelDetails.weblist[0].navbar.logo} className="navbar-log" alt="Brand logo" /> */}
         </div>
         <ul className="nav-links-right">
-            <li>events</li>
-            <li>gallery</li>
+            <li><Link to="#events">events</Link></li>
+            <li><Link to="#gallery">gallery</Link></li>
           </ul>
         </div>
       

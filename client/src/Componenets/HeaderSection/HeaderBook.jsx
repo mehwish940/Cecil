@@ -269,7 +269,7 @@ function HeaderBook({ setquery, query }) {
        
             <div className="input-content-wrapper position-relitive">
               <div className="input-wrapper position-relitive" onClick={getClickPosition}>
-                <span className="input-span child-input">Children</span>
+                <span className="input-span child-input">Select Property</span>
                 <input type="text" className="select-input child-input" id="child-input" value={Children} disabled />
               </div>
             </div>
