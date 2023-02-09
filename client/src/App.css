@@ -1210,7 +1210,6 @@ span {
 svg {
   pointer-events: none;
   cursor: pointer;
-  vertical-align: unset;
 }
 
 .grid {
@@ -1429,7 +1428,7 @@ figure.effect-lily:hover p {
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
   font-family: "Playfair Display", serif;
   line-height: 1.125em;
-  margin-top: 11px;
+  margin-top: 7px;
   transition: left 0.5s ease-in, top 0.5s ease-in;
   -webkit-transition: left 0.5s ease-in, top 0.5s ease-in;
   -moz-transition: left 0.5s ease-in, top 0.5s ease-in;
@@ -1691,7 +1690,7 @@ input::-webkit-input-placeholder {
 }
 
 .showCalendar {
-  margin-top: 45px;
+  margin-top:7px;
 }
 
 .showCalendar1 {

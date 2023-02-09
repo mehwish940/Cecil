@@ -52,11 +52,11 @@ function Accomodation({ query, setquery, Accomodationid, title }) {
         return roomsDetails.json();
       })
       .then((roomsDetailsJSon) => {
-        console.log(roomsDetailsJSon);
+        //console.log(roomsDetailsJSon);
         if (roomsDetailsJSon["Success"]) {
           setRooms(roomsDetailsJSon["Success"]["Result"][0]["HotelRooms"]);
         } else {
-          console.log(roomsDetailsJSon["Availability"]["Message"][0]);
+          //console.log(roomsDetailsJSon["Availability"]["Message"][0]);
           setErrorMSg(roomsDetailsJSon["Availability"]["Message"][0]);
         }
         // console.log(roomsDetailsJSon['Success']['Result'][0]['HotelRooms']);
