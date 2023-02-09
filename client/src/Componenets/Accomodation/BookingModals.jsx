@@ -271,7 +271,8 @@ export function RoomModal({
                                       </div>
                                     </div>
                                     <div className="f-13 text-default text-default-bold">
-                                      {b.smallest["Rate"]} X {b.quantity} {b.smallest["RatePlanCurrencyCode"]}.
+                                      {b.smallest["Rate"]} X {b.quantity}{" "}
+                                      {b.smallest["RatePlanCurrencyCode"]}.
                                     </div>
                                   </div>
                                 );
@@ -285,7 +286,13 @@ export function RoomModal({
                               Total
                             </div>
                             <div className="f-14 text-default text-default-bold">
-                              {BookingDetails.Total} {BookingDetails.plansDetail[0].smallest["RatePlanCurrencyCode"]}.
+                              {BookingDetails.Total}{" "}
+                              {
+                                BookingDetails.plansDetail[0].smallest[
+                                  "RatePlanCurrencyCode"
+                                ]
+                              }
+                              .
                             </div>
                           </div>
                         </div>
@@ -560,8 +567,8 @@ export function RatePlan({
     </div>
   );
 }
-export function RoomInformationModal({ roomInfoModal }) {
-  //console.log(roomInfoModal);
+export function RoomInformationModal({ roomInfoModal, onClick }) {
+  console.log(roomInfoModal);
   return (
     <div className="roomDescription">
       <div className="roomImageContainer">
@@ -607,7 +614,11 @@ export function RoomInformationModal({ roomInfoModal }) {
               </span>{" "}
               / night
             </div>
-            <Button buttonStyle="btn--primary" buttonSize="btn--medium">
+            <Button
+              buttonStyle="btn--primary"
+              buttonSize="btn--medium"
+              onClick={onClick}
+            >
               BOOK NOW
             </Button>
           </div>

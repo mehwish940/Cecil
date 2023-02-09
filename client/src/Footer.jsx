@@ -86,7 +86,7 @@ function Footer({ query, setquery }) {
 
       </div>
       <div className="footer-content font-15 text-capitalized">
-        <p>Copyright &copy; {new Date().getFullYear()} APM All rights reserved</p>
+        <p>Copyright &copy; {new Date().getFullYear()} Cecil All rights reserved</p>
       </div>
     </>
   );

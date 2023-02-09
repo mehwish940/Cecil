@@ -139,7 +139,16 @@ function Accomodation({ query, setquery, Accomodationid, title }) {
           onClose={InfohandleClose}
           fullWidth={true}
         >
-          <RoomInformationModal roomInfoModal={roomInfoModal} />
+          <RoomInformationModal
+            roomInfoModal={roomInfoModal}
+            onClick={() => {
+              InfohandleClose();
+              roomInfoModal.rooms["RatePlanDetails"][0]["RatePlans"].length !==
+              0
+                ? pushRoomDetails(roomInfoModal.rooms["RoomId"][0])
+                : window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+          />
         </Dialog>
 
         {query.AccomodationLoading ? (
@@ -179,9 +188,11 @@ function Accomodation({ query, setquery, Accomodationid, title }) {
             })}
           </Swiper>
         ) : (
-          <div className="d-flex justify-content-center"> <div className="errorMsg">
-          <FaSadTear className="sad-icons"/>&nbsp;&nbsp;{ErrorMSg}</div></div>
-         
+          <div className="d-flex justify-content-center">
+            <div className="errorMsg">
+              {ErrorMSg ? "Hotel is Fully Booked on these Dates." : null}
+            </div>
+          </div>
         )}
       </div>
     </div>
@@ -196,7 +207,9 @@ export function AccomodationCard({
   InfohandleOpen,
 }) {
   return (
-    <div className="Accomodation-card">
+    <div
+      className="Accomodation-card"
+    >
       <div
         style={{
           backgroundImage: `linear-gradient(rgba(47, 70, 95,0.5),rgba(47, 70, 95,0.5)), url(${
@@ -206,6 +219,7 @@ export function AccomodationCard({
           })`,
         }}
         className="Accomodation-item"
+        onClick={() => InfohandleOpen(room, smallest)}
       >
         <div className="m-2">
           <div
@@ -220,7 +234,9 @@ export function AccomodationCard({
             <CheckPerson number={smallest["MaxPerson"]} />
           </div>
         </div>
-        <div className="Accomodation-item-bottom m-3">
+       
+      </div>
+      <div className="Accomodation-item-bottom m-3">
           <span>
             {smallest["RatePlanCurrencyCode"]} {smallest["Rate"]}/night
           </span>
@@ -232,7 +248,6 @@ export function AccomodationCard({
             {Bookcheck ? "BOOK NOW" : "CHANGE DATE"}
           </Button>
         </div>
-      </div>
       <div className="description-div">
         <span className="font-20 bolder primiary-font text-uppercase">
           {room["RoomName"]}
