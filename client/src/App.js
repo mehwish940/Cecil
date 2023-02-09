@@ -26,7 +26,6 @@ function App() {
     check_in: moment().format("YYYY-MM-DD"),
     check_out: moment().add('2', 'days').format("YYYY-MM-DD"),
     rooms: '',
-    child: '',
     hotelDetails: '',
     loading: false,
     AccomodationLoading: false,

@@ -281,10 +281,12 @@ Book Now css started
   width: 100%;
   padding: 10px 10px 10px 10px;
   background-color: transparent;
-  font-size: 1.5rem;
   color: #fff;
   outline: none;
   border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   font-family: inherit;
   background-image: url("./images/angle-down-solid.svg");
   background-repeat: no-repeat;
@@ -347,7 +349,7 @@ navbar Now css started
   padding: clamp(0.5em, 1em, 0.5em) clamp(1em, 1.5em, 2em);
   font-size: clamp(0.2em, 1vw + 0.5em, 1vw + 0.7em);
 }
-.errorMsg .sad-icons{
+.errorMsg .sad-icons {
   font-size: clamp(1em, 1vw + 1.2em, 1vw + 1.6em);
 }
 
@@ -520,9 +522,11 @@ ul {
   border-bottom: 1px solid var(--CustomYellow);
   box-shadow: 0 2px 1px -1px rgba(151, 150, 150, 0.952);
   /*position: absolute;
-  */cursor: pointer;
+  */
+  cursor: pointer;
   /*left: clamp(1em, 4%, 3em);
-  */font-family: "Playfair Display", serif;
+  */
+  font-family: "Playfair Display", serif;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -1418,7 +1422,6 @@ figure.effect-lily:hover p {
   position: absolute;
   z-index: 100;
   width: 30rem;
-  display: none;
   font-size: 14px;
   background-color: #fff;
   color: #222;
@@ -1428,18 +1431,56 @@ figure.effect-lily:hover p {
   line-height: 1.125em;
   margin-top: 11px;
   transition: left 0.5s ease-in, top 0.5s ease-in;
-  padding: 20px 15px 20px 0px;
+  -webkit-transition: left 0.5s ease-in, top 0.5s ease-in;
+  -moz-transition: left 0.5s ease-in, top 0.5s ease-in;
+  -ms-transition: left 0.5s ease-in, top 0.5s ease-in;
+  -o-transition: left 0.5s ease-in, top 0.5s ease-in;
+}
+.counter-dropdown-1 {
+  position: absolute;
+  z-index: 100;
+  width: 30rem;
+  font-size: 15px;
+  background-color: #fff;
+  color: #222;
+  border: 1px solid #ffff !important;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  font-family: "Playfair Display", serif;
+  line-height: 1.125em;
+  margin-top: 7px;
+  transition: left 0.5s ease-in, top 0.5s ease-in;
+  -webkit-transition: left 0.5s ease-in, top 0.5s ease-in;
+  -moz-transition: left 0.5s ease-in, top 0.5s ease-in;
+  -ms-transition: left 0.5s ease-in, top 0.5s ease-in;
+  -o-transition: left 0.5s ease-in, top 0.5s ease-in;
+}
+.counter-dropdown-1 ul {
+  color: #000;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.counter-dropdown-1 ul li:hover {
+  background-color: rgba(209, 170, 101, 0.6);
+  color: #ffff;
 }
 
+.counter-dropdown-1 li {
+  list-style: none;
+  padding: 10px 10px;
+}
 .counter-dropdown ul {
   color: #000;
   display: flex;
   justify-content: space-between;
+  padding: 0 !important;
+  margin: 0 !important;
+  padding: 10px 10px;
+
 }
 
 .counter-dropdown li {
   list-style: none;
-  margin-top: 12px;
+  padding: 10px 20px;
 }
 
 /* span {
@@ -1660,7 +1701,7 @@ input::-webkit-input-placeholder {
 #searchData1 {
   position: absolute;
   z-index: 1000 !important;
-  display: none;
+  /* display: none; */
   transition: 0.5s ease-in-out;
   -webkit-transition: 0.5s ease-in-out;
   -moz-transition: 0.5s ease-in-out;
@@ -1768,8 +1809,9 @@ input::-webkit-input-placeholder {
   width: 100%;
   padding: 10px 50px 10px 10px;
   background-color: transparent;
+  text-transform: none;
   /* font-size: 2rem; */
-  color: var(--white);
+  color: #ffff;
   outline: none;
   border: none;
 }
@@ -1998,7 +2040,7 @@ dialog {
   overflow: overlay;
   box-shadow: 2px 1px 5px 1px rgba(0, 0, 0, 0.1);
 }
-.facilities:hover{
+.facilities:hover {
   color: #fff;
 }
 
