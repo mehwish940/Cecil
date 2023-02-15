@@ -14,8 +14,10 @@
 .btn--primary {
   background-color: var(--CustomYellow) !important;
   color: #fff !important;
-  border: 1px solid var(--CustomYellow) !important;
-  font-weight: bold !important;
+  border: solid var(--CustomYellow) !important;
+  border-width: thin !important;
+  font-size: clamp(1em, 4vw, 1.7em);
+  font-weight: 700 !important;
 }
 .btn--outline {
   background-color: transparent !important;
@@ -39,6 +41,7 @@
 .btn--medium {
   padding: 10px 22px !important;
   font-size: 1.5rem !important;
+
 }
 
 .btn--large {
@@ -70,13 +73,6 @@
   -o-border-radius: 4px;
 }
 
-.btn--wide {
-  padding: 10px 0px !important;
-  font-size: 1.5rem !important;
-  border: 1px sold #f0ca06 !important;
-  width: 100%;
-  letter-spacing: 1px !important;
-}
 
 .btn--large:hover,
 .btn--mobile:hover {

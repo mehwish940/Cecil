@@ -245,6 +245,9 @@ Book Now css started
   padding-bottom: 2rem;
   position: unset !important;
 }
+.mySwiper-attraction {
+  position: unset !important;
+}
 
 .bookNow-container {
   width: 100%;
@@ -1019,7 +1022,7 @@ p {
 
 .main-container {
   width: 100%;
-  padding: 7rem 0rem;
+  padding: 6rem 0rem;
   overflow: hidden;
 }
 
@@ -1103,16 +1106,20 @@ p {
   left: 0px !important;
 }
 
-.mySwiper .swiper-button-next {
+.mySwiper .swiper-button-next,
+.mySwiper-attraction .swiper-button-next {
   right: 0px !important;
 }
 
-.mySwiper .swiper-button-prev {
+.mySwiper .swiper-button-prev,
+.mySwiper-attraction .swiper-button-prev {
   left: 0px !important;
 }
 
 .mySwiper .swiper-button-next::after,
-.mySwiper .swiper-button-prev::after {
+.mySwiper .swiper-button-prev::after,
+.mySwiper-attraction .swiper-button-next::after,
+.mySwiper-attraction .swiper-button-prev::after {
   font-size: 3rem !important;
   font-weight: bold !important;
   color: #000 !important;
@@ -1121,8 +1128,17 @@ p {
 .mySwiper .swiper-button-next,
 .mySwiper .swiper-button-prev {
   height: 93% !important;
-  width: 7% !important;  /* padding-left: 20px; */
+  width: 7% !important; /* padding-left: 20px; */
   top: 47px !important;
+  background-color: rgba(255, 255, 255, 0.6) !important;
+  box-shadow: 1px 1px 2px 1px rgba(255, 255, 255, 0.2) !important;
+}
+
+.mySwiper-attraction .swiper-button-next,
+.mySwiper-attraction .swiper-button-prev {
+  height: 100% !important;
+  width: clamp(2% + 4vw, 4% + 2vw , 3% + 3vw) !important;
+  top: 0px !important;
   background-color: rgba(255, 255, 255, 0.6) !important;
   box-shadow: 1px 1px 2px 1px rgba(255, 255, 255, 0.2) !important;
 }
@@ -1305,12 +1321,13 @@ figure {
 /***** Lily *****/
 
 /*---------------*/
-
-figure.effect-lily img {
+.effect-lily img {
   max-width: none;
   width: -webkit-calc(100% + 50px);
   position: relative;
-  width: calc(100% + 50px);
+  overflow: hidden;
+  margin: 1em;
+  /* width: calc(100% + 50px); */
   /* opacity: 0.7; */
   -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
   transition: opacity 0.35s, transform 0.35s;
@@ -1320,12 +1337,20 @@ figure.effect-lily img {
   -ms-transform: translate3d(-40px, 0, 0);
   -o-transform: translate3d(-40px, 0, 0);
 }
-
-figure.effect-lily figcaption {
-  text-align: left;
+.mySwiper-attraction .swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
+.mySwiper-attraction .swiper-pagination {
+  position: static;
+  margin-top: 3.5rem;
+}
+/* .effect-lily figcaption {
+  text-align: left;
+} */
 
-figure.effect-lily figcaption > div {
+/* figure.effect-lily figcaption > div {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -1361,9 +1386,9 @@ figure.effect-lily p,
   opacity: 0;
   -webkit-transition: opacity 0.2s, -webkit-transform 0.35s;
   transition: opacity 0.2s, transform 0.35s;
-}
+} */
 
-figure.effect-lily:hover:after {
+/* figure.effect-lily:hover:after {
   opacity: 1;
 }
 
@@ -1386,10 +1411,10 @@ figure.effect-lily:hover h2 {
   opacity: 1;
   position: relative;
   z-index: 1;
-}
+} */
 
 /* figure.effect-lily:hover img, */
-figure.effect-lily:hover h2,
+/* figure.effect-lily:hover h2,
 figure.effect-lily:hover p {
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
@@ -1400,7 +1425,7 @@ figure.effect-lily:hover p {
   transition-delay: 0.05s;
   -webkit-transition-duration: 0.35s;
   transition-duration: 0.35s;
-}
+} */
 
 .adults-move {
   top: 2.5em;
@@ -1417,7 +1442,9 @@ figure.effect-lily:hover p {
   left: 23em;
 }
 
-.counter-dropdown {
+.counter-dropdown,
+.counter-dropdown-2
+ {
   position: absolute;
   z-index: 100;
   width: 30rem;
@@ -1453,7 +1480,9 @@ figure.effect-lily:hover p {
   -ms-transition: left 0.5s ease-in, top 0.5s ease-in;
   -o-transition: left 0.5s ease-in, top 0.5s ease-in;
 }
-.counter-dropdown-1 ul {
+.counter-dropdown-1 ul,
+.counter-dropdown-2 ul
+ {
   color: #000;
   padding: 0 !important;
   margin: 0 !important;
@@ -1463,18 +1492,23 @@ figure.effect-lily:hover p {
   color: #ffff;
 }
 
-.counter-dropdown-1 li {
+.counter-dropdown-1 li,
+.counter-dropdown-2 li{
   list-style: none;
   padding: 10px 10px;
+  cursor: pointer;
+}
+.counter-dropdown ul li:hover {
+  background-color: rgba(209, 170, 101, 0.6);
+  color: #ffff;
 }
 .counter-dropdown ul {
   color: #000;
-  display: flex;
-  justify-content: space-between;
+  /* display: flex;
+  justify-content: space-between; */
   padding: 0 !important;
   margin: 0 !important;
   padding: 10px 10px;
-
 }
 
 .counter-dropdown li {
@@ -1690,7 +1724,7 @@ input::-webkit-input-placeholder {
 }
 
 .showCalendar {
-  margin-top:7px;
+  margin-top: 7px;
 }
 
 .showCalendar1 {

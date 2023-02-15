@@ -403,14 +403,20 @@ export function RatePlan({
   );
   const setbookingData = (q) => {
     if (q == 0) {
-      var checkR = BookingDetails.plansDetail.filter(
-        (b) => b.smallest["RatePlanId"][0] !== p["RatePlanId"][0]
-      );
-      console.log(checkR);
+      var index = BookingDetails.plansDetail.findIndex((b) => {
+        return (
+          b["RoomId"][0] == roomDetailsMAp["RoomId"][0] &&
+          b.smallest["RatePlanId"][0] == p["RatePlanId"][0]
+        );
+      });
+      if (index > -1) {
+        BookingDetails.plansDetail.splice(index, 1);
+      }
+      //console.log(index, BookingDetails.plansDetail);
       setBookingDetails({
         ...BookingDetails,
-        plansDetail: checkR,
-        Total: checkR.reduce(function (tot, arr) {
+        plansDetail: BookingDetails.plansDetail,
+        Total: BookingDetails.plansDetail.reduce(function (tot, arr) {
           return tot + parseInt(arr.smallest["Rate"][0]) * arr.quantity;
         }, 0),
       });

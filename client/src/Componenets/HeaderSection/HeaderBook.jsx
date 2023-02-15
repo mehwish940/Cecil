@@ -18,6 +18,7 @@ function HeaderBook({ setquery, query }) {
     check_out: "",
     adults: 2,
     rooms: 1,
+    child: 0,
     property: "",
     state: [
       {
@@ -164,7 +165,7 @@ function HeaderBook({ setquery, query }) {
                   }}
                 >
                   <div className="select-input child-input">
-                    {bookData.property ? bookData.property : "Select Property"}
+                    {bookData.property ? bookData.property : "Select Wing"}
                   </div>
                 </div>
                 {bookData.ShowPropertyDrop ? (
@@ -250,11 +251,11 @@ function HeaderBook({ setquery, query }) {
                 >
                   <div className="select-input room-input">
                     <div>No of Rooms</div>
-                    <div className="me-5"> {bookData.rooms}</div>
+                    <div className="me-5">{bookData.rooms}</div>
                   </div>
                 </div>
                 {bookData.showroomsDropdown ? (
-                  <DropdownContainer
+                  <DropdownRoomContainer
                     bookData={bookData}
                     setBookData={setBookData}
                   />
@@ -263,13 +264,14 @@ function HeaderBook({ setquery, query }) {
             </div>
 
             <div className="input-content-wrapper">
-              <Button
+              <button
                 buttonStyle="btn--primary"
-                buttonSize="btn--wide"
+                buttonSize=""
                 onClick={sendData}
+                className="h-100 w-100 btn--primary"
               >
                 CHECK AVAILABILITY
-              </Button>
+              </button>
             </div>
           </form>
         </div>
@@ -286,7 +288,13 @@ export function DropdownContainer({ bookData, setBookData }) {
       setBookData({ ...bookData, adults: bookData.adults - 1 });
     }
   };
-
+  const handlechildIncrement = (operation) => {
+    if (operation == "add") {
+      setBookData({ ...bookData, child: bookData.child + 1 });
+    } else if (operation == "sub" && bookData.child > 1) {
+      setBookData({ ...bookData, child: bookData.child - 1 });
+    }
+  };
   const handleIncrementrooms = (operation) => {
     if (operation == "add") {
       setBookData({ ...bookData, rooms: bookData.rooms + 1 });
@@ -295,8 +303,8 @@ export function DropdownContainer({ bookData, setBookData }) {
     }
   };
   return (
-    <div className="counter-dropdown p-3" id="counter-dropdown">
-      <ul>
+    <div className="counter-dropdown-2 py-3" id="counter-dropdown">
+      <ul className="d-flex justify-content-between">
         <li className="dropIcon1">Adults</li>
         <li className="dropIcon1">
           <span className="dropIcon" onClick={() => handleIncrement("add")}>
@@ -308,8 +316,66 @@ export function DropdownContainer({ bookData, setBookData }) {
           </span>
         </li>
       </ul>
+      <ul className="d-flex justify-content-between">
+        <li className="dropIcon1">Childern</li>
+        <li className="dropIcon1">
+          <span
+            className="dropIcon"
+            onClick={() => handlechildIncrement("add")}
+          >
+            <AiOutlinePlusCircle />
+          </span>
+          <b className="mx-4">{bookData.child}</b>
+          <span
+            className="dropIcon"
+            onClick={() => handlechildIncrement("sub")}
+          >
+            <AiOutlineMinusCircle />
+          </span>
+        </li>
+      </ul>
+    </div>
+  );
+}
+
+export function DropdownRoomContainer({ bookData, setBookData }) {
+  const handleIncrement = (operation) => {
+    if (operation == "add") {
+      setBookData({ ...bookData, adults: bookData.adults + 1 });
+    } else if (operation == "sub" && bookData.adults > 1) {
+      setBookData({ ...bookData, adults: bookData.adults - 1 });
+    }
+  };
+
+  const handleIncrementrooms = (operation) => {
+    if (operation == "add") {
+      setBookData({ ...bookData, rooms: bookData.rooms + 1 });
+    } else if (operation == "sub" && bookData.rooms > 1) {
+      setBookData({ ...bookData, rooms: bookData.rooms - 1 });
+    }
+  };
+  return (
+    <div className="counter-dropdown py-3" id="counter-dropdown">
       <ul>
-        <li className="dropIcon1">Rooms</li>
+        <li
+          className="dropIcon1"
+          onClick={() => setBookData({ ...bookData, rooms: 1 })}
+        >
+          1 Rooms
+        </li>
+        <li
+          className="dropIcon1"
+          onClick={() => setBookData({ ...bookData, rooms: 2 })}
+        >
+          2 Rooms
+        </li>
+        <li
+          className="dropIcon1"
+          onClick={() => setBookData({ ...bookData, rooms: 3 })}
+        >
+          3 Rooms
+        </li>
+
         <li className="dropIcon1">
           <span
             className="dropIcon"

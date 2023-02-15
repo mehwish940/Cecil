@@ -75,7 +75,7 @@ function Footer({ query, setquery }) {
             <h5 className="font-20 bold mb-5">STAY IN TOUCH</h5>
             <form onSubmit={subscribeFunction}>
               <div className="subscribe d-flex">
-                <input type="email" placeholder="Subscribe To Our Newsletter" value={useremail} onChange={(e) => setemail(e.target.value)} required />
+                <input type="email" placeholder="Your email address here" value={useremail} onChange={(e) => setemail(e.target.value)} required />
                 <button type="submit" className="btn btn--primary">SUBSCRIBE</button>
               </div>
             </form>
