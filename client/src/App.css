@@ -1081,65 +1081,65 @@ p {
 .custom-checkbox-1 input:checked + span:before {
   content: "✔";
 }
+.attractions{
+  padding-left: clamp(2.8em, 5vw, 5em);
+  padding-right: clamp(2.8em, 5vw, 5em);
+}
 
-.RoomImageSwiper .swiper-slide {
+.RoomImageSwiper .swiper-slide,
+.mySwiper .swiper-slide{
   background-size: cover !important;
   background-position: center;
 }
 
 .RoomImageSwiper .swiper-button-next::after,
-.RoomImageSwiper .swiper-button-prev::after {
+.RoomImageSwiper .swiper-button-prev::after,
+.mySwiper .swiper-button-next::after,
+.mySwiper .swiper-button-prev::after {
   font-size: 2.5rem !important;
   background-color: var(--CustomYellow);
   padding: 0.9em;
-  font-weight: bold !important;
-  color: #000 !important;
+  color: #fff !important;
 }
 
-.RoomImageSwiper .swiper-button-next {
+.RoomImageSwiper .swiper-button-next,
+.RoomImageSwiper .swiper-button-next
+ {
   right: 0px !important;
 }
 
-.RoomImageSwiper .swiper-button-prev {
+.RoomImageSwiper .swiper-button-prev,
+.RoomImageSwiper .swiper-button-prev
+{
   left: 0px !important;
 }
 
-.mySwiper .swiper-button-next,
-.mySwiper-attraction .swiper-button-next {
-  right: 0px !important;
-}
-
-.mySwiper .swiper-button-prev,
-.mySwiper-attraction .swiper-button-prev {
-  left: 0px !important;
-}
-
-.mySwiper .swiper-button-next::after,
+/* .mySwiper .swiper-button-next::after,
 .mySwiper .swiper-button-prev::after,
 .mySwiper-attraction .swiper-button-next::after,
 .mySwiper-attraction .swiper-button-prev::after {
   font-size: 3rem !important;
   font-weight: bold !important;
   color: #000 !important;
-}
+} */
 
-.mySwiper .swiper-button-next,
+/* .mySwiper .swiper-button-next,
 .mySwiper .swiper-button-prev {
   height: 93% !important;
-  width: 7% !important; /* padding-left: 20px; */
   top: 47px !important;
   background-color: rgba(255, 255, 255, 0.6) !important;
   box-shadow: 1px 1px 2px 1px rgba(255, 255, 255, 0.2) !important;
 }
 
 .mySwiper-attraction .swiper-button-next,
-.mySwiper-attraction .swiper-button-prev {
+.mySwiper-attraction .swiper-button-prev { 
   height: 100% !important;
   width: clamp(2% + 4vw, 4% + 2vw , 3% + 3vw) !important;
   top: 0px !important;
   background-color: rgba(255, 255, 255, 0.6) !important;
   box-shadow: 1px 1px 2px 1px rgba(255, 255, 255, 0.2) !important;
 }
+*/
 
 .divider {
   width: 30%;
@@ -1319,22 +1319,7 @@ figure {
 /***** Lily *****/
 
 /*---------------*/
-.effect-lily img {
-  max-width: none;
-  width: -webkit-calc(100% + 50px);
-  position: relative;
-  overflow: hidden;
-  margin: 1em;
-  /* width: calc(100% + 50px); */
-  /* opacity: 0.7; */
-  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
-  transition: opacity 0.35s, transform 0.35s;
-  -webkit-transform: translate3d(-40px, 0, 0);
-  transform: translate3d(-40px, 0, 0);
-  -moz-transform: translate3d(-40px, 0, 0);
-  -ms-transform: translate3d(-40px, 0, 0);
-  -o-transform: translate3d(-40px, 0, 0);
-}
+
 .mySwiper-attraction .swiper-slide img {
   width: 100%;
   height: 100%;

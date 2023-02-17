@@ -3,13 +3,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.min.css";
 import "swiper/swiper.min.css";
 import "react-loading-skeleton/dist/skeleton.css";
-import { Grid, Autoplay, Pagination, Navigation } from "swiper";
-import {
-  LightgalleryProvider,
-  LightgalleryItem,
-  withLightgallery,
-  useLightgallery,
-} from "react-lightgallery";
+import { Grid, Autoplay, Pagination } from "swiper";
+import { LightgalleryProvider, LightgalleryItem } from "react-lightgallery";
 import "lightgallery.js/dist/css/lightgallery.css";
 export const breakPoints = {
   0: {
@@ -33,26 +28,26 @@ export const breakPoints = {
 };
 function Attractions({ nearBy }) {
   return (
-    <div className="main-container attractions" id="gallery">
-      <div className="inner-container">
+    <div className="main-container" id="gallery">
+      <div className="inner-container attractions">
         <div className="text-center mb-5">
           <h2>Photo Album</h2>
         </div>
-      </div>
-      {/* <div className="grid"> */}
-      <LightgalleryProvider>
+        <LightgalleryProvider>
         <Swiper
           pagination={{ clickable: true }}
           breakpoints={breakPoints}
           spaceBetween={10}
+          centeredSlides={false}
+          centerInsufficientSlides={true}
+          edgeSwipeThreshold={50}
           loop={true}
           autoplay={{
             delay: 2000,
             disableOnInteraction: false,
           }}
           className="mySwiper-attraction position-relative"
-          modules={[Grid, Autoplay, Navigation, Pagination]}
-          navigation={true}
+          modules={[Autoplay, Pagination]}
         >
           {nearBy.map((n, i) => {
             return (
@@ -65,6 +60,9 @@ function Attractions({ nearBy }) {
           })}
         </Swiper>
       </LightgalleryProvider>
+      </div>
+      {/* <div className="grid"> */}
+      
 
       {/* </div> */}
     </div>

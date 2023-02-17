@@ -357,24 +357,6 @@ export function DropdownRoomContainer({ bookData, setBookData }) {
   return (
     <div className="counter-dropdown py-3" id="counter-dropdown">
       <ul>
-        <li
-          className="dropIcon1"
-          onClick={() => setBookData({ ...bookData, rooms: 1 })}
-        >
-          1 Rooms
-        </li>
-        <li
-          className="dropIcon1"
-          onClick={() => setBookData({ ...bookData, rooms: 2 })}
-        >
-          2 Rooms
-        </li>
-        <li
-          className="dropIcon1"
-          onClick={() => setBookData({ ...bookData, rooms: 3 })}
-        >
-          3 Rooms
-        </li>
 
         <li className="dropIcon1">
           <span
