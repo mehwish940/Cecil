@@ -1481,10 +1481,7 @@ figure.effect-lily:hover p {
   padding: 10px 10px;
   cursor: pointer;
 }
-.counter-dropdown ul li:hover {
-  background-color: rgba(209, 170, 101, 0.6);
-  color: #ffff;
-}
+
 .counter-dropdown ul {
   color: #000;
   /* display: flex;

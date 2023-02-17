@@ -29,7 +29,7 @@ export const breakPoints = {
 function Attractions({ nearBy }) {
   return (
     <div className="main-container" id="gallery">
-      <div className="inner-container attractions">
+      <div className="Accomodation-head">
         <div className="text-center mb-5">
           <h2>Photo Album</h2>
         </div>
