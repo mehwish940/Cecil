@@ -33,7 +33,7 @@ function App() {
 
 
   useEffect(() => {
-    console.clear();
+    //console.clear();
     fetch('/hotel').then(response => {
       if (!response.ok) {
         throw Error('could not fetch the data for that resorce')

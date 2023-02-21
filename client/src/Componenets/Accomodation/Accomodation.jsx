@@ -23,6 +23,8 @@ function Accomodation({ query, setquery, Accomodationid, title }) {
   const [Infoopen, InfosetOpen] = useState(false);
   const [roomInfoModal, setRoomInfoiModal] = useState("");
   const [RoomDetails, setRoomDetails] = useState([]);
+  const [addMoreRoom, setaddMoreRoom] = useState(false);
+
   const [BookingDetails, setBookingDetails] = useState({
     plansDetail: "",
     Total: 0,
@@ -80,19 +82,32 @@ function Accomodation({ query, setquery, Accomodationid, title }) {
 
   const pushRoomDetails = (roomID) => {
     var check = RoomDetails.find((f) => f.roomID == roomID);
-    if (!check) {
-      var fRooms = rooms.find((f) => f["RoomId"][0] == roomID);
-      const smallest = findSmallest(fRooms["RatePlanDetails"][0]["RatePlans"]);
-      setRoomDetails([...RoomDetails, { roomID: roomID }]);
+    //console.log(check);
+    // if (!check) {
+    var fRooms = rooms.find((f) => f["RoomId"][0] == roomID);
+    const smallest = findSmallest(fRooms["RatePlanDetails"][0]["RatePlans"]);
+    //console.log(addMoreRoom);
+    if (addMoreRoom) {
+      if (!check) {
+        setRoomDetails([...RoomDetails, { roomID: roomID }]);
+        setBookingDetails({
+          ...BookingDetails,
+          plansDetail: [
+            ...BookingDetails.plansDetail,
+            { ...fRooms, smallest, quantity: 1 },
+          ],
+          Total: BookingDetails.Total + parseInt(smallest["Rate"]),
+        });
+      }
+    } else {
+      setRoomDetails([{ roomID: roomID }]);
       setBookingDetails({
-        ...BookingDetails,
-        plansDetail: [
-          ...BookingDetails.plansDetail,
-          { ...fRooms, smallest, quantity: 1 },
-        ],
+        plansDetail: [{ ...fRooms, smallest, quantity: 1 }],
         Total: BookingDetails.Total + parseInt(smallest["Rate"]),
       });
     }
+    //}
+    setaddMoreRoom(false);
     handleOpen();
   };
 
@@ -127,6 +142,7 @@ function Accomodation({ query, setquery, Accomodationid, title }) {
             setBookingDetails={setBookingDetails}
             BookingDetails={BookingDetails}
             rooms={rooms}
+            setaddMoreRoom={setaddMoreRoom}
           />
         </Dialog>
         {/* {console.log(rooms)} */}
@@ -207,9 +223,7 @@ export function AccomodationCard({
   InfohandleOpen,
 }) {
   return (
-    <div
-      className="Accomodation-card"
-    >
+    <div className="Accomodation-card">
       <div
         style={{
           backgroundImage: `linear-gradient(rgba(47, 70, 95,0.5),rgba(47, 70, 95,0.5)), url(${
@@ -234,20 +248,19 @@ export function AccomodationCard({
             <CheckPerson number={smallest["MaxPerson"]} />
           </div>
         </div>
-       
       </div>
       <div className="Accomodation-item-bottom m-3">
-          <span>
-            {smallest["RatePlanCurrencyCode"]} {smallest["Rate"]}/night
-          </span>
-          <Button
-            buttonStyle="btn--primary"
-            buttonSize="btn--medium"
-            onClick={onClick}
-          >
-            {Bookcheck ? "BOOK NOW" : "CHANGE DATE"}
-          </Button>
-        </div>
+        <span>
+          {smallest["RatePlanCurrencyCode"]} {smallest["Rate"]}/night
+        </span>
+        <Button
+          buttonStyle="btn--primary"
+          buttonSize="btn--medium"
+          onClick={onClick}
+        >
+          {Bookcheck ? "BOOK NOW" : "CHANGE DATE"}
+        </Button>
+      </div>
       <div className="description-div">
         <span className="font-20 bolder primiary-font text-uppercase">
           {room["RoomName"]}

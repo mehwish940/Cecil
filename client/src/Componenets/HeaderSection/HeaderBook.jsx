@@ -23,7 +23,7 @@ function HeaderBook({ setquery, query }) {
     state: [
       {
         startDate: new Date(),
-        endDate: addDays(new Date(), 2),
+        endDate: addDays(new Date(), 1),
         key: "selection",
       },
     ],
@@ -78,8 +78,8 @@ function HeaderBook({ setquery, query }) {
                   }}
                 >
                   <div className="form-input-container Check-in">
-                    {bookData.check_in
-                      ? moment(bookData.check_in).format("MMM Do YYYY")
+                    {bookData.state[0].startDate
+                      ? moment(bookData.state[0].startDate).format("MMM Do YYYY")
                       : "Check-in"}
                   </div>
                   <div className="input-wrapper-left-image">
@@ -137,8 +137,8 @@ function HeaderBook({ setquery, query }) {
                 }}
               >
                 <div className="form-input-container Check-in">
-                  {bookData.check_out
-                    ? moment(bookData.check_out).format("MMM Do YYYY")
+                  {bookData.state[0].endDate
+                    ? moment(bookData.state[0].endDate).format("MMM Do YYYY")
                     : "Check-out"}
                 </div>
                 <div className="input-wrapper-left-image">

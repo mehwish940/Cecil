@@ -28,7 +28,9 @@ export function RoomModal({
   BookingDetails,
   setBookingDetails,
   rooms,
+  setaddMoreRoom,
 }) {
+  //console.log(BookingDetails)
   const [show, setShow] = useState({
     bookingDetails: "",
     show: 0,
@@ -95,6 +97,7 @@ export function RoomModal({
       "guest=>" + guest_qtys,
       "Total=>" + BookingDetails.Total
     );
+
     //setShow({ ...show, loading: false, show: 2 })
     const BookingData = await BookRoom(
       values,
@@ -369,14 +372,19 @@ export function RoomModal({
                   <button
                     type="button"
                     class="btn btn--outline btn--fixed mx-2"
-                    onClick={handleClose}
+                    onClick={() => {
+                      setaddMoreRoom(true);
+                      handleClose();
+                    }}
                   >
                     ADD MORE ROOMS
                   </button>
                   <button
                     type="button"
                     class="btn btn--primary btn--fixed mx-2"
-                    onClick={() => setShow({ ...show, show: 1 })}
+                    onClick={() => {
+                      setShow({ ...show, show: 1 });
+                    }}
                   >
                     PROCEED
                   </button>
@@ -456,7 +464,7 @@ export function RatePlan({
   const [dropdown, setdropdown] = useState(false);
   const dropdownRef = useRef(null);
   useEffect(() => {
-    console.clear();
+    //console.clear();
     document.addEventListener("click", handleClickOutSideDropdown);
     return () => {
       document.removeEventListener("click", handleClickOutSideDropdown);
@@ -573,6 +581,7 @@ export function RatePlan({
     </div>
   );
 }
+
 export function RoomInformationModal({ roomInfoModal, onClick }) {
   console.log(roomInfoModal);
   return (
