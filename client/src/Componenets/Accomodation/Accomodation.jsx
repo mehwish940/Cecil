@@ -170,39 +170,28 @@ function Accomodation({ query, setquery, Accomodationid, title }) {
         {query.AccomodationLoading ? (
           <LoadingCards />
         ) : rooms.length !== 0 ? (
-          <Swiper
-            pagination={{ clickable: true }}
-            breakpoints={breakPoints}
-            centeredSlides={false}
-            centerInsufficientSlides={true}
-            spaceBetween={10}
-            navigation={true}
-            edgeSwipeThreshold={50}
-            modules={[Navigation]}
-            className="mySwiper"
-          >
+          <div className="accomodation_grid">
             {rooms.map((r, i) => {
               //console.log(r)
               const smallest = findSmallest(
                 r["RatePlanDetails"][0]["RatePlans"]
               );
               return (
-                <SwiperSlide key={r["RoomId"][0]}>
-                  <AccomodationCard
-                    Bookcheck={true}
-                    InfohandleOpen={InfohandleOpen}
-                    room={r}
-                    smallest={smallest}
-                    onClick={() =>
-                      r["RatePlanDetails"][0]["RatePlans"].length !== 0
-                        ? pushRoomDetails(r["RoomId"][0])
-                        : window.scrollTo({ top: 0, behavior: "smooth" })
-                    }
-                  />
-                </SwiperSlide>
+                <AccomodationCard
+                  Bookcheck={true}
+                  InfohandleOpen={InfohandleOpen}
+                  room={r}
+                  smallest={smallest}
+                  onClick={() =>
+                    r["RatePlanDetails"][0]["RatePlans"].length !== 0
+                      ? pushRoomDetails(r["RoomId"][0])
+                      : window.scrollTo({ top: 0, behavior: "smooth" })
+                  }
+                />
+                
               );
             })}
-          </Swiper>
+          </div>
         ) : (
           <div className="d-flex justify-content-center">
             <div className="errorMsg">

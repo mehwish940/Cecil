@@ -246,7 +246,6 @@ Book Now css started
   position: unset !important;
 }
 
-
 .bookNow-container {
   width: 100%;
   color: #fff;
@@ -694,13 +693,24 @@ accomodations css started
 /* .mySwiper .swiper-slide {
     width: 290px !important;
 } */
-
+.about_desc {
+  text-transform: unset;
+}
+.accomodation_grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+}
 .Accomodation-card {
   display: flex;
   flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
   margin-top: 3rem;
+  width: calc(90vw / 4);
+  position: relative;
   /* margin-bottom: 3rem; */
   justify-content: center;
 }
@@ -1081,13 +1091,13 @@ p {
 .custom-checkbox-1 input:checked + span:before {
   content: "✔";
 }
-.attractions{
+.attractions {
   padding-left: clamp(2.8em, 5vw, 5em);
   padding-right: clamp(2.8em, 5vw, 5em);
 }
 
 .RoomImageSwiper .swiper-slide,
-.mySwiper .swiper-slide{
+.mySwiper .swiper-slide {
   background-size: cover !important;
   background-position: center;
 }
@@ -1103,14 +1113,12 @@ p {
 }
 
 .RoomImageSwiper .swiper-button-next,
-.RoomImageSwiper .swiper-button-next
- {
+.RoomImageSwiper .swiper-button-next {
   right: 0px !important;
 }
 
 .RoomImageSwiper .swiper-button-prev,
-.RoomImageSwiper .swiper-button-prev
-{
+.RoomImageSwiper .swiper-button-prev {
   left: 0px !important;
 }
 
@@ -1426,8 +1434,7 @@ figure.effect-lily:hover p {
 }
 
 .counter-dropdown,
-.counter-dropdown-2
- {
+.counter-dropdown-2 {
   position: absolute;
   z-index: 100;
   width: 30rem;
@@ -1464,8 +1471,7 @@ figure.effect-lily:hover p {
   -o-transition: left 0.5s ease-in, top 0.5s ease-in;
 }
 .counter-dropdown-1 ul,
-.counter-dropdown-2 ul
- {
+.counter-dropdown-2 ul {
   color: #000;
   padding: 0 !important;
   margin: 0 !important;
@@ -1476,7 +1482,7 @@ figure.effect-lily:hover p {
 }
 
 .counter-dropdown-1 li,
-.counter-dropdown-2 li{
+.counter-dropdown-2 li {
   list-style: none;
   padding: 10px 10px;
   cursor: pointer;

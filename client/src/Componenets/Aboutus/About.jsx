@@ -15,7 +15,7 @@ function About({ aboutUS }) {
           <div className="about-left col-lg-6 col-md-6 col-sm-12">
             <span className="font-20">{aboutUS.sunTitle}</span>
             <h2 className="mb-5">{aboutUS.title}</h2>
-            <div className="font-18">
+            <div className="font-18 about_desc">
               {Parser(aboutUS.desc)}
             </div>
             <div className="mt-5 mb-5">
