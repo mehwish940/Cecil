@@ -26,12 +26,11 @@ export const breakPoints = {
     slidesPerView: 4,
   },
 };
-function Attractions({ nearBy }) {
+function Attractions({ nearBy , title}) {
   return (
-    <div className="main-container" id="gallery">
       <div className="Accomodation-head">
         <div className="text-center mb-5">
-          <h2>Photo Album</h2>
+          <h2>{title}</h2>
         </div>
         <LightgalleryProvider>
         <Swiper
@@ -43,17 +42,18 @@ function Attractions({ nearBy }) {
           edgeSwipeThreshold={50}
           loop={true}
           autoplay={{
-            delay: 2000,
-            disableOnInteraction: false,
+            delay: 4000,
+            disableOnInteraction: true,
           }}
+          slidesPerGroup={4}
           className="mySwiper-attraction position-relative"
           modules={[Autoplay, Pagination]}
         >
           {nearBy.map((n, i) => {
             return (
               <SwiperSlide className="effect-lily" key={i}>
-                <LightgalleryItem group="group1" src={n.img}>
-                  <img src={n.img} alt="Gibbons Park" />
+                <LightgalleryItem group="group1" src={n}>
+                  <img src={n} alt="Gibbons Park" />
                 </LightgalleryItem>
               </SwiperSlide>
             );
@@ -61,11 +61,6 @@ function Attractions({ nearBy }) {
         </Swiper>
       </LightgalleryProvider>
       </div>
-      {/* <div className="grid"> */}
-      
-
-      {/* </div> */}
-    </div>
   );
 }
 

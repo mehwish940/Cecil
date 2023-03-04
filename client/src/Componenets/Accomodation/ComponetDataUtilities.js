@@ -7,6 +7,31 @@ import { Pagination } from "swiper";
 import { ReactComponent as Person } from "../../images/Path149.svg";
 import { initiateCheckout, getForeeCheckoutURL } from "foree-checkout";
 
+export const HeritagePhotos=[
+    'images/Photo_Album/Heritage/DSC_6655.JPG',
+    'images/Photo_Album/Heritage/DSC_6683.JPG',
+    'images/Photo_Album/Heritage/DSC_6721-HDR.JPG',
+    'images/Photo_Album/Heritage/DSC_6850copy.jpg',
+    'images/Photo_Album/Heritage/DSC_6855-HDR.JPG',
+    'images/Photo_Album/Heritage/DSC_6909.JPG',
+    'images/Photo_Album/Heritage/DSC_7244-HDR.JPG',
+    'images/Photo_Album/Heritage/DSC_7399-HDR.JPG',
+    'images/Photo_Album/Heritage/DSC_7499-HDR.JPG',
+    'images/Photo_Album/Heritage/DSC_7514-HDR.JPG',
+    'images/Photo_Album/Heritage/DSC_7554-HDR.JPG',
+    'images/Photo_Album/Heritage/DSC_7574-HDR.JPG',
+]
+
+export const StudioPhotos=[
+    'images/Photo_Album/Studio/DSC_3364-HDR.JPG',
+    'images/Photo_Album/Studio/DSC_3449-HDR.JPG',
+    'images/Photo_Album/Studio/DSC_3615-HDR.jpg',
+    'images/Photo_Album/Studio/DSC_3715-HDR.JPG',
+    'images/Photo_Album/Studio/DSC_3745-HDR.JPG',
+    'images/Photo_Album/Studio/DSC_3837-HDR.JPG',
+    'images/Photo_Album/Studio/DSC_3874.JPG',
+]
+
 
 export const breakPoints = {
     0: {
