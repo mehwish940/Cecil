@@ -101,7 +101,7 @@ function App() {
               title="Photo Album – Heritage Wing"
               nearBy={HeritagePhotos}
             />
-            <div className="my-4"></div>
+            <div className="mt-6"></div>
             <Attractions
               title=" Photo Album -  Studio Wing"
               nearBy={StudioPhotos}
