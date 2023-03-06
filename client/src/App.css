@@ -459,8 +459,8 @@ ul {
   position: relative;
   background-size: contain;
   background-repeat: no-repeat;
-  width: clamp(10em, 14vw, 16em);
-  height: clamp(10em, 14vw, 16em);
+  width: clamp(9em, 13vw, 16em);
+  height: clamp(9em, 13vw, 16em);
   margin: 10px auto;
   /* text-align: center;
     overflow: visible;
@@ -510,12 +510,12 @@ ul {
 }
 .navbar-inner ul li {
   list-style: none;
-  padding: clamp(7px - 1vh, 12px, 13px + 1vh) clamp(10px + 1vw, 3vw, 20px + 2vw);
+  padding: clamp(7px - 1vh, 12px, 13px + 1vh) clamp(8px + 1vw, 2.5vw, 20px + 2vw);
 }
 .nav-links-left {
   display: inline-flex;
   color: #fff;
-  font-size: clamp(1.5em, 2vw, 1.8em);
+  font-size: clamp(1.4em, 2vw, 1.8em);
   letter-spacing: 2px;
   border-bottom: 1px solid var(--CustomYellow);
   box-shadow: 0 2px 1px -1px rgba(151, 150, 150, 0.952);
@@ -538,7 +538,7 @@ ul {
 .nav-links-right {
   display: inline-flex;
   color: #fff;
-  font-size: clamp(1.5em, 2vw, 1.8em);
+  font-size: clamp(1.4em, 2vw, 1.8em);
   border-bottom: 1px solid var(--CustomYellow);
   letter-spacing: 2px;
   cursor: pointer;
