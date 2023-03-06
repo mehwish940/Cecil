@@ -105,8 +105,8 @@ app.post('/api/getreservationdetails', (req, response) => {
 
 
 app.post('/api/book', (req, response) => {
-    var url = `http://beapi.bookingwhizz.com/Connect.svc/xml/createreservation?userid=10008&password=KJH34H0D01&accommodationid=${req.body.postHotelId}&roomids=${req.body.roomId}&rateplanids=${req.body.ratePlanId}&extraids=${req.body.extraids}&roomqty=${req.body.roomqty}&checkin=${req.body.check_in}&checkout=${req.body.check_out}&booker_firstname=${req.body.name}&booker_lastname=${req.body.lastName}&booker_email=${req.body.email}&booker_telephone=${req.body.phone}&cc_type=${req.body.cc_type}&bookingstatus=${req.body.bookingstatus}&booker_street=''&booker_zipcode=''&booker_city=${req.body.city}&booker_country=PK&guest_qtys=${req.body.guest_qtys}&guest_names=${req.body.name}&guest_emails=${req.body.email}&guest_telephones=${req.body.phone}&comments=''&totalprice=${req.body.Total}&ratesbydate=${req.body.ratesbydate}&roomids=${req.body.roomId}&rateplanids=${req.body.ratePlanId}&payment_method=&charged_amount=10&reservation_type=&channelids=&promotion_code=&pms=0&pmsids=0&discounted_price=0.00&partnerid=BW&loyaltypoints=&loyaltydiscount=&membertype=&programname=&signupdate=&statuscode=&membership_id=&converted_currency=&converted_price=0.00&sourceid=&profileid=&multilanguageid=1&cc_no=&cc_cvc=`;
-    //console.log(url)
+    var url = `http://beapi.bookingwhizz.com/Connect.svc/xml/createreservation?userid=10008&password=KJH34H0D01&accommodationid=${req.body.postHotelId}&roomids=${req.body.roomId}&rateplanids=${req.body.ratePlanId}&extraids=${req.body.extraids}&roomqty=${req.body.roomqty}&checkin=${req.body.check_in}&checkout=${req.body.check_out}&booker_firstname=${req.body.name}&booker_lastname=${req.body.lastName}&booker_email=${req.body.email}&booker_telephone=${req.body.phone}&cc_type=${req.body.cc_type}&bookingstatus=${req.body.bookingstatus}&booker_street=''&booker_zipcode=''&booker_city=${req.body.city}&booker_country=PK&guest_qtys=${req.body.guest_qtys}&guest_names=${req.body.name}&guest_emails=${req.body.email}&guest_telephones=${req.body.phone}&comments=''&totalprice=${req.body.Total}&ratesbydate=${req.body.ratesbydate}&roomids=${req.body.roomId}&rateplanids=${req.body.ratePlanId}&payment_method=&charged_amount=10&reservation_type=&channelids=&promotion_code=&pms=0&pmsids=0&discounted_price=0.00&partnerid=3&loyaltypoints=&loyaltydiscount=&membertype=&programname=&signupdate=&statuscode=&membership_id=&converted_currency=&converted_price=0.00&sourceid=CecilWebsite&profileid=&multilanguageid=1&cc_no=&cc_cvc=`;
+   // console.log(url)
     axios
         .get(url)
         .then(res => {
@@ -122,7 +122,7 @@ app.post('/api/book', (req, response) => {
             });
         })
         .catch(error => {
-            console.error(error)
+            console.error(error.message)
         })
 });
 

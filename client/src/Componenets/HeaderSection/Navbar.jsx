@@ -27,7 +27,7 @@ function Navbar({ setquery, query }) {
       <nav className="navbar">
         <div className="container px-3 position-relative navbar-inner">
           <ul className="nav-links-left">
-            <li><Link to="#accomodation">Stay</Link></li>
+            <li><Link to="#accomodation">Room</Link></li>
             <li><Link to="#dining">dining</Link></li>
           </ul>
         <div className="logo-container" style={{backgroundImage: `url(${query.hotelDetails.weblist[0].navbar.logo})`}}>

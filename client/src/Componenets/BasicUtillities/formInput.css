@@ -6,6 +6,7 @@ textarea {
     border: solid rgba(0, 0, 0, 0.2);
     border-width: thin;
     outline: none;
+    text-transform: none !important;
 }
 
 .formInput input::placeholder ,

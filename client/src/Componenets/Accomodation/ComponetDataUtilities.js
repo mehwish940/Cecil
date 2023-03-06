@@ -178,7 +178,7 @@ export function LoadingCards() {
 }
 
 
-export const BookRoom = (values, BookingDetails, query, roomId, ratesbydate, extraids, roomqty, ratePlanId, guest_qtys) => {
+export const BookRoom = (values, BookingDetails, query, roomId, ratesbydate, extraids, roomqty, ratePlanId, guest_qtys, Accomodationid) => {
     var bookingDetails = new Promise((resolve, reject) => {
         fetch('/api/book', {
             method: 'POST',
@@ -187,7 +187,7 @@ export const BookRoom = (values, BookingDetails, query, roomId, ratesbydate, ext
             },
             body: JSON.stringify({
                 ...values, name: values.username.split(' ')[0], lastName: values.username.split(' ')[1],
-                postHotelId: BookingDetails.AccomodationId, check_in: query.check_in, check_out: query.check_out,
+                postHotelId: Accomodationid, check_in: query.check_in, check_out: query.check_out,
                 Total: BookingDetails.Total, roomId: roomId.toString(), ratePlanId: ratePlanId.toString(), extraids: extraids.toString(),
                 guest_qtys: guest_qtys, ratesbydate: ratesbydate, ProfileId: '', roomqty: roomqty.toString(),
                 cc_type: values.isChecked ? 18 : 36, bookingstatus: values.isChecked ? 1 : 5

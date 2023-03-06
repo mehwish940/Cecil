@@ -29,7 +29,6 @@ function Accomodation({ query, setquery, Accomodationid, title }) {
     plansDetail: "",
     Total: 0,
     Tax: 0,
-    AccomodationId: Accomodationid,
     nights: moment(query.check_out).diff(moment(query.check_in), "days"),
   });
 
@@ -41,7 +40,7 @@ function Accomodation({ query, setquery, Accomodationid, title }) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        postID: BookingDetails.AccomodationId,
+        postID: Accomodationid,
         postCheckIn: query.check_in,
         postCheckOut: query.check_out,
       }),
@@ -142,6 +141,7 @@ function Accomodation({ query, setquery, Accomodationid, title }) {
             setBookingDetails={setBookingDetails}
             BookingDetails={BookingDetails}
             rooms={rooms}
+            Accomodationid={Accomodationid}
             setaddMoreRoom={setaddMoreRoom}
           />
         </Dialog>

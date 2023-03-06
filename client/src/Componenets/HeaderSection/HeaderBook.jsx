@@ -356,8 +356,8 @@ export function DropdownRoomContainer({ bookData, setBookData }) {
   };
   return (
     <div className="counter-dropdown py-3" id="counter-dropdown">
-      <ul>
-
+       <ul className="d-flex justify-content-between">
+        <li className="dropIcon1">Rooms</li>
         <li className="dropIcon1">
           <span
             className="dropIcon"
@@ -374,6 +374,24 @@ export function DropdownRoomContainer({ bookData, setBookData }) {
           </span>
         </li>
       </ul>
+      {/* <ul>
+
+        <li className="dropIcon1">
+          <span
+            className="dropIcon"
+            onClick={() => handleIncrementrooms("add")}
+          >
+            <AiOutlinePlusCircle />
+          </span>
+          <b className="mx-4">{bookData.rooms}</b>
+          <span
+            className="dropIcon"
+            onClick={() => handleIncrementrooms("sub")}
+          >
+            <AiOutlineMinusCircle />
+          </span>
+        </li>
+      </ul> */}
     </div>
   );
 }

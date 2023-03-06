@@ -687,12 +687,14 @@ accomodations css started
   /* align-items: center; */
   justify-content: space-evenly;
 }
-
+.alert.alert-warning {
+  font-size: 1.5rem;
+}
 /* .mySwiper .swiper-slide {
     width: 290px !important;
 } */
 .about_desc {
-  text-transform: unset;
+  text-transform: none !important;
 }
 .accomodation_grid {
   display: flex;

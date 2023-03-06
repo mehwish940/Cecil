@@ -4,22 +4,16 @@ import { RxCross1 } from "react-icons/rx";
 import FormInputs from "../BasicUtillities/FormInputs";
 import { BookRoom, CheckPerson, inputs } from "./ComponetDataUtilities";
 import { ReactComponent as FreeWifi } from "../../images/029-wifi.svg";
-import { ReactComponent as Parking } from "../../images/parking.svg";
-import { ReactComponent as NoSMoking } from "../../images/011-no-smoking.svg";
-import { ReactComponent as Pet } from "../../images/pet.svg";
 import { ReactComponent as Bed } from "../../images/026-bed.svg";
-import { ReactComponent as Disabled } from "../../images/disabled.svg";
-import { ReactComponent as Fridge } from "../../images/004-fridge.svg";
-import { ReactComponent as Family } from "../../images/family-room.svg";
 import { ReactComponent as Microwave } from "../../images/microwave.svg";
 import { ReactComponent as AirCondition } from "../../images/air-conditioner-.svg";
 import { ReactComponent as RoomServices } from "../../images/room-service-com.svg";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.min.css";
 import "swiper/swiper.min.css";
 import { Navigation } from "swiper";
 import { Button } from "../Button/Button";
+import OutsideClickHandler from "react-outside-click-handler";
 
 export function RoomModal({
   RoomDetails,
@@ -29,6 +23,7 @@ export function RoomModal({
   setBookingDetails,
   rooms,
   setaddMoreRoom,
+  Accomodationid,
 }) {
   //console.log(BookingDetails)
   const [show, setShow] = useState({
@@ -36,6 +31,7 @@ export function RoomModal({
     show: 0,
     loading: false,
   });
+  const [error, setError] = useState(false);
   const [values, setValues] = useState({
     username: "",
     email: "",
@@ -88,15 +84,17 @@ export function RoomModal({
         }
       }
     }
-    console.log(
-      "room=>" + roomId.toString(),
-      "estraID=>" + extraids.toString(),
-      "plans=>" + ratePlanId.toString(),
-      "roomQ=>" + roomqty.toString(),
-      "rates=>" + ratesbydate,
-      "guest=>" + guest_qtys,
-      "Total=>" + BookingDetails.Total
-    );
+    // console.log(
+    //   "room=>" + roomId.toString(),
+    //   "estraID=>" + extraids.toString(),
+    //   "plans=>" + ratePlanId.toString(),
+    //   "roomQ=>" + roomqty.toString(),
+    //   "rates=>" + ratesbydate,
+    //   "guest=>" + guest_qtys,
+    //   "Total=>" + BookingDetails.Total,
+    //   "gotelId=>" + Accomodationid
+
+    // );
 
     //setShow({ ...show, loading: false, show: 2 })
     const BookingData = await BookRoom(
@@ -108,9 +106,10 @@ export function RoomModal({
       extraids,
       roomqty,
       ratePlanId,
-      guest_qtys
+      guest_qtys,
+      Accomodationid
     );
-    console.log(BookingData);
+    //onsole.log(BookingData);
     setShow({ ...show, bookingDetails: BookingData, loading: false, show: 2 });
   };
   return (
@@ -189,6 +188,27 @@ export function RoomModal({
             </div>
           ) : (
             <>
+              {error ? (
+                <OutsideClickHandler
+                  onOutsideClick={() => {
+                    setError(false);
+                  }}
+                >
+                  <div
+                    class="alert alert-warning alert-dismissible fade show"
+                    role="alert"
+                  >
+                    Please select at least one room to proceed.
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="alert"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                </OutsideClickHandler>
+              ) : null}
+
               {RoomDetails.length !== 0 && show.show !== 2
                 ? RoomDetails.map((rr, index) => {
                     var roomDetailsMAp = rooms.find(
@@ -233,6 +253,7 @@ export function RoomModal({
                                   <RatePlan
                                     roomDetailsMAp={roomDetailsMAp}
                                     p={p}
+                                    setError={setError}
                                     BookingDetails={BookingDetails}
                                     setBookingDetails={setBookingDetails}
                                   />
@@ -383,7 +404,11 @@ export function RoomModal({
                     type="button"
                     class="btn btn--primary btn--fixed mx-2"
                     onClick={() => {
-                      setShow({ ...show, show: 1 });
+                      if (BookingDetails.plansDetail.length > 0) {
+                        setShow({ ...show, show: 1 });
+                      } else {
+                        setError(true);
+                      }
                     }}
                   >
                     PROCEED
@@ -403,6 +428,7 @@ export function RatePlan({
   setBookingDetails,
   BookingDetails,
   roomDetailsMAp,
+  setError,
 }) {
   var TofindQuantity = BookingDetails.plansDetail.find(
     (b) =>
@@ -411,23 +437,28 @@ export function RatePlan({
   );
   const setbookingData = (q) => {
     if (q == 0) {
-      var index = BookingDetails.plansDetail.findIndex((b) => {
-        return (
-          b["RoomId"][0] == roomDetailsMAp["RoomId"][0] &&
-          b.smallest["RatePlanId"][0] == p["RatePlanId"][0]
-        );
-      });
-      if (index > -1) {
-        BookingDetails.plansDetail.splice(index, 1);
+    
+      if (BookingDetails.plansDetail.length > 1) {
+        var index = BookingDetails.plansDetail.findIndex((b) => {
+          return (
+            b["RoomId"][0] == roomDetailsMAp["RoomId"][0] &&
+            b.smallest["RatePlanId"][0] == p["RatePlanId"][0]
+          );
+        });
+        if (index > -1) {
+          BookingDetails.plansDetail.splice(index, 1);
+        }
+        console.log(index, BookingDetails.plansDetail);
+        setBookingDetails({
+          ...BookingDetails,
+          plansDetail: BookingDetails.plansDetail,
+          Total: BookingDetails.plansDetail.reduce(function (tot, arr) {
+            return tot + parseInt(arr.smallest["Rate"][0]) * arr.quantity;
+          }, 0),
+        });
+      } else {
+        setError(true);
       }
-      //console.log(index, BookingDetails.plansDetail);
-      setBookingDetails({
-        ...BookingDetails,
-        plansDetail: BookingDetails.plansDetail,
-        Total: BookingDetails.plansDetail.reduce(function (tot, arr) {
-          return tot + parseInt(arr.smallest["Rate"][0]) * arr.quantity;
-        }, 0),
-      });
     } else {
       var checkR = BookingDetails.plansDetail.find(
         (b) =>
