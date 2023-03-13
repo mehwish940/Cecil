@@ -16,9 +16,9 @@ import {
 } from "./ComponetDataUtilities";
 import { IoIosInformationCircle } from "react-icons/io";
 import { FaSadTear } from "react-icons/fa";
-function Accomodation({ query, setquery, Accomodationid, title }) {
-  const [rooms, setRooms] = useState([]);
-  const [ErrorMSg, setErrorMSg] = useState("");
+function Accomodation({ query, setquery, Accomodationid, title, rooms, ErrorMSg }) {
+  //const [rooms, setRooms] = useState([]);
+  //const [ErrorMSg, setErrorMSg] = useState("");
   const [open, setOpen] = useState(false);
   const [Infoopen, InfosetOpen] = useState(false);
   const [roomInfoModal, setRoomInfoiModal] = useState("");
@@ -31,42 +31,43 @@ function Accomodation({ query, setquery, Accomodationid, title }) {
     Tax: 0,
     nights: moment(query.check_out).diff(moment(query.check_in), "days"),
   });
+  //
 
-  useEffect(() => {
-    //  console.log(query.check_in)
-    fetch("/api/getRooms", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        postID: Accomodationid,
-        postCheckIn: query.check_in,
-        postCheckOut: query.check_out,
-      }),
-    })
-      .then((roomsDetails) => {
-        // console.log(roomsDetails);
-        if (!roomsDetails.ok) {
-          throw Error("could not fetch the data for that resorce");
-        }
-        return roomsDetails.json();
-      })
-      .then((roomsDetailsJSon) => {
-        //console.log(roomsDetailsJSon);
-        if (roomsDetailsJSon["Success"]) {
-          setRooms(roomsDetailsJSon["Success"]["Result"][0]["HotelRooms"]);
-        } else {
-          //console.log(roomsDetailsJSon["Availability"]["Message"][0]);
-          setErrorMSg(roomsDetailsJSon["Availability"]["Message"][0]);
-        }
-        // console.log(roomsDetailsJSon['Success']['Result'][0]['HotelRooms']);
-        setquery({ ...query, AccomodationLoading: false });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [query.AccomodationLoading]);
+  // useEffect(() => {
+  //   //  console.log(query.check_in)
+  //   fetch("/api/getRooms", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       postID: Accomodationid,
+  //       postCheckIn: query.check_in,
+  //       postCheckOut: query.check_out,
+  //     }),
+  //   })
+  //     .then((roomsDetails) => {
+  //       // console.log(roomsDetails);
+  //       if (!roomsDetails.ok) {
+  //         throw Error("could not fetch the data for that resorce");
+  //       }
+  //       return roomsDetails.json();
+  //     })
+  //     .then((roomsDetailsJSon) => {
+  //       //console.log(roomsDetailsJSon);
+  //       if (roomsDetailsJSon["Success"]) {
+  //         setRooms(roomsDetailsJSon["Success"]["Result"][0]["HotelRooms"]);
+  //       } else {
+  //         //console.log(roomsDetailsJSon["Availability"]["Message"][0]);
+  //         setErrorMSg(roomsDetailsJSon["Availability"]["Message"][0]);
+  //       }
+  //       // console.log(roomsDetailsJSon['Success']['Result'][0]['HotelRooms']);
+  //       setquery({ ...query, AccomodationLoading: false });
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, [query.AccomodationLoading]);
 
   const handleOpen = () => setOpen(true);
   const InfohandleOpen = (room, smallest) => {

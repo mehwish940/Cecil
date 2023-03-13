@@ -510,7 +510,8 @@ ul {
 }
 .navbar-inner ul li {
   list-style: none;
-  padding: clamp(7px - 1vh, 12px, 13px + 1vh) clamp(8px + 1vw, 2.5vw, 20px + 2vw);
+  padding: clamp(7px - 1vh, 12px, 13px + 1vh)
+    clamp(8px + 1vw, 2.5vw, 20px + 2vw);
 }
 .nav-links-left {
   display: inline-flex;
@@ -1466,7 +1467,7 @@ figure.effect-lily:hover p {
 .counter-dropdown-1 {
   position: absolute;
   z-index: 100;
-  width: 30rem;
+  width: fit-content;
   font-size: 15px;
   background-color: #fff;
   color: #222;
@@ -1495,7 +1496,7 @@ figure.effect-lily:hover p {
 .counter-dropdown-1 li,
 .counter-dropdown-2 li {
   list-style: none;
-  padding: 10px 10px;
+  padding: 1.5rem 2.5rem ;
   cursor: pointer;
 }
 
@@ -2804,11 +2805,19 @@ dialog {
   .Accomodation-card {
     width: calc(85vw / 2);
   }
+  .counter-dropdown,
+  .counter-dropdown-2 .counter-dropdown-1 {
+    width: fit-content !important;
+  }
 }
 
 @media (min-width: 310px) and (max-width: 410px) {
   html {
     font-size: 35% !important;
+  }
+  .counter-dropdown,
+  .counter-dropdown-2 .counter-dropdown-1 {
+    width: fit-content;
   }
 
   .mian-header-text {

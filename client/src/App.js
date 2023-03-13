@@ -28,10 +28,10 @@ import {
 
 function App() {
   const [query, setquery] = useState({
-    adults: "",
+    adults: 2,
     check_in: moment().format("YYYY-MM-DD"),
     check_out: moment().add("2", "days").format("YYYY-MM-DD"),
-    rooms: "",
+    rooms: 1,
     hotelDetails: "",
     loading: false,
     AccomodationLoading: false,

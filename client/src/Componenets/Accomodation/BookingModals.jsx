@@ -25,13 +25,14 @@ export function RoomModal({
   setaddMoreRoom,
   Accomodationid,
 }) {
-  //console.log(BookingDetails)
+  // console.log(query)
   const [show, setShow] = useState({
     bookingDetails: "",
     show: 0,
     loading: false,
   });
   const [error, setError] = useState(false);
+  const [errorMSG, seterrorMSG] = useState("");
   const [values, setValues] = useState({
     username: "",
     email: "",
@@ -198,7 +199,9 @@ export function RoomModal({
                     class="alert alert-warning alert-dismissible fade show"
                     role="alert"
                   >
-                    Please select at least one room to proceed.
+                    {errorMSG
+                      ? errorMSG
+                      : "Please select at least one room to proceed."}
                     <button
                       type="button"
                       class="btn-close"
@@ -405,7 +408,22 @@ export function RoomModal({
                     class="btn btn--primary btn--fixed mx-2"
                     onClick={() => {
                       if (BookingDetails.plansDetail.length > 0) {
-                        setShow({ ...show, show: 1 });
+                        //console.log(BookingDetails.plansDetail);
+                        var maxPersonQuantity =
+                          BookingDetails.plansDetail.reduce(
+                            (sum, x) =>
+                              sum + Number(x["RoomMaxPerson"][0] * x.quantity),
+                            0
+                          );
+                        //console.log("data=>", maxPersonQuantity, query.adults);
+                        if (Number(maxPersonQuantity) < Number(query.adults)) {
+                          setError(true);
+                          seterrorMSG(
+                            "The occupancy of rooms is less than the number of people chosen; please make an appropriate selection."
+                          );
+                        } else {
+                          setShow({ ...show, show: 1 });
+                        }
                       } else {
                         setError(true);
                       }
@@ -437,7 +455,6 @@ export function RatePlan({
   );
   const setbookingData = (q) => {
     if (q == 0) {
-    
       if (BookingDetails.plansDetail.length > 1) {
         var index = BookingDetails.plansDetail.findIndex((b) => {
           return (
@@ -695,31 +712,6 @@ export function RoomInformationModal({ roomInfoModal, onClick }) {
             <RoomServices />
             <div className="amenites-grid-item-des">Rooms Service</div>
           </div>
-          {/* <div className="amenites-grid-item">
-                        <NoSMoking />
-                        <div className='amenites-grid-item-des'>No Smoking</div>
-
-                    </div> */}
-          {/* <div className="amenites-grid-item">
-                        <Pet />
-                        <div className='amenites-grid-item-des'>Pet Friendly</div>
-                    </div> */}
-          {/* <div className="amenites-grid-item">
-                        <Family />
-                        <div className='amenites-grid-item-des'>Family Rooms</div>
-                    </div>
-                    <div className="amenites-grid-item">
-                        <Disabled />
-                        <div className='amenites-grid-item-des'>Facilities</div>
-                    </div>
-                    <div className="amenites-grid-item">
-                        <Fridge />
-                        <div className='amenites-grid-item-des'>Mini-fridge</div>
-                    </div>
-                    <div className="amenites-grid-item">
-                        <Microwave />
-                        <div className='amenites-grid-item-des'>Microwave</div>
-                    </div> */}
         </div>
       </div>
     </div>
